@@ -19,5 +19,15 @@ export default{
 </template>
 
 <style lang="scss" scoped>
-
+    nav{
+        margin-left: 50px;
+        padding: 20px 0;
+        ul{
+            list-style: none;
+            li{
+                display: inline-block;
+                padding-left: 10px;
+            }
+        }
+    }
 </style>
