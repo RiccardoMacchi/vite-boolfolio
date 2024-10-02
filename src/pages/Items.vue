@@ -36,7 +36,7 @@ export default{
             .catch(error =>{
                 console.log(error)
             }) 
-        }
+        },
     },
     mounted(){
         this.getApi(store.urlApi + 'items','items');
@@ -55,7 +55,9 @@ export default{
                     <Loading/>
                 </div>
                 <ul v-else>
-                    <li v-for="item in items"> {{ item.title }}</li>
+                    <li v-for="item in items">
+                        <router-link :to="{name:'itemsDetails', params:{'slug' : item.slug}}">{{ item.title }}</router-link>
+                    </li>
                 </ul>
             <div class="paginator_btn">
                 <button v-for="link in paginatorLink" v-html="link.label" @click="getApi(link.url)" :disabled="link.active || !link.url"></button>
@@ -65,11 +67,11 @@ export default{
          <div class="wrapper_cath">
              <div>
                 <h4>Tecnologie:</h4>
-                 <button v-for="tech in technologies.technologies">{{ tech.name }}</button>
+                 <a class="badge badge-tech" v-for="tech in technologies.technologies">{{ tech.name }}</a>
              </div>
              <div>
                 <h4>Tipi:</h4>
-                 <button v-for="type in types.types">{{ type.name }}</button>
+                 <a class="badge badge-type" v-for="type in types.types">{{ type.name }}</a>
              </div>
          </div>
     </div>
@@ -118,6 +120,10 @@ ul{
         }
     }
 
+}
+
+.badge{
+    width: 100%;
 }
 
 </style>
