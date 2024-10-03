@@ -14,6 +14,9 @@ export default{
             <li>
                 <router-link :to="{name:'items'}">Lavori</router-link>
             </li>
+            <li>
+                <router-link :to="{name:'contacts'}">Contatti</router-link>
+            </li>
         </ul>
     </nav>
 </template>

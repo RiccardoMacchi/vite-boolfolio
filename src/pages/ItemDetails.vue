@@ -18,9 +18,13 @@ export default{
         getApi(slug){
             axios.get(store.urlApi + 'item-by-slug/' + slug)
                 .then(response =>{
-                    this.isLoading = false
-                    this.item = response.data.item
-                    console.log(response.data.item)
+                    if(response.data.success){
+                        this.isLoading = false
+                        this.item = response.data.item
+                        console.log(response.data.item)
+                    }else{
+                        this.$router.push({ name: '404' })
+                    }
                 })
         }
     },

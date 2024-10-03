@@ -1,11 +1,16 @@
 <script>
 import { store } from '@/store/store';
 import axios from 'axios';
+import Loading from '@/partials/Loading.vue';
 
 export default{
     name: 'lavoriByType',
+    components:{
+        Loading
+    },
     data(){
         return{
+            isLoading : true,
             typeName : '',
             items : [],
         }
@@ -14,12 +19,13 @@ export default{
         getApi(slug){
             axios.get(store.urlApi + 'list-by-type/' + slug)
                 .then(resp =>{
+                    this.isLoading = false;
                     if(resp.data.success){
                         this.typeName = resp.data.type.name
                         this.items = resp.data.type.items
                         console.log(this.typeName)
                     } else{
-                        this.$router.
+                        this.$router.push({ name: '404' })
                     }
                 })
                 .catch(err =>{
@@ -35,7 +41,10 @@ export default{
 </script>
 
 <template>
-    <div>
+    <div v-if="isLoading">
+        <Loading/>
+    </div>
+    <div v-else>
         <h1>TECNOLOGIA: {{ typeName }}</h1>
         <h5>Lavori:</h5>
         <ul>
