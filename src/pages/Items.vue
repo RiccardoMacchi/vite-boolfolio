@@ -67,11 +67,15 @@ export default{
          <div class="wrapper_cath">
              <div>
                 <h4>Tecnologie:</h4>
-                 <a class="badge badge-tech" v-for="tech in technologies.technologies">{{ tech.name }}</a>
+                 <a class="badge badge-tech" v-for="tech in technologies.technologies">
+                    <router-link :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
+                </a>
              </div>
              <div>
                 <h4>Tipi:</h4>
-                 <a class="badge badge-type" v-for="type in types.types">{{ type.name }}</a>
+                 <a class="badge badge-type" v-for="type in types.types">
+                    <router-link :to="{name:'lavoriByType', params:{'slug': type.slug}}">{{ type.name }}</router-link>
+                 </a>
              </div>
          </div>
     </div>
