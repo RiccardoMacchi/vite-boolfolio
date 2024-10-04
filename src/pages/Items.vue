@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { store } from '@/store/store';
 import Loading from '../partials/Loading.vue';
+import { personalBadge } from '@/utilis/utils';
 
 export default{
     name: 'items',
@@ -31,6 +32,13 @@ export default{
                     } else{
                         this[type] = response.data
                         console.log(this[type])
+
+                        // start della funzione personalBadge
+                        if (type === 'technologies' || type === 'types') {
+                        this.$nextTick(() => {
+                            personalBadge();
+                        })
+                    }
                     }
                 })
             .catch(error =>{
@@ -42,7 +50,6 @@ export default{
         this.getApi(store.urlApi + 'items','items');
         this.getApi(store.urlApi + 'types','types');
         this.getApi(store.urlApi + 'technologies','technologies');
-
     }
 }
 </script>

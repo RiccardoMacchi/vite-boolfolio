@@ -2,6 +2,7 @@
 import Loading from '@/partials/Loading.vue';
 import { store } from '@/store/store';
 import axios from 'axios';
+import { personalBadge } from '@/utilis/utils';
 
 export default{
     name: 'itemsDetails',
@@ -22,6 +23,10 @@ export default{
                         this.isLoading = false
                         this.item = response.data.item
                         console.log(response.data.item)
+                        // esecuzione funzione dopo 
+                        this.$nextTick(() => {
+                            personalBadge();
+                        })
                     }else{
                         this.$router.push({ name: '404' })
                     }
@@ -46,11 +51,13 @@ export default{
         <img :src="item.img_path" alt="">
         <div v-if="item.technologies.length > 0">
             <h4>Tecnologie:</h4>
-            <span class="badge badge-tech" v-for="tech in item.technologies">{{ tech.name }}</span>
+            <span v-for="tech in item.technologies">
+                <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
+            </span>
         </div>
         <div>
             <h4>Dipendenze:</h4>
-            <span class="badge badge-type">{{ item.type.name }}</span>
+            <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
         </div>
         <h5>Dettagli:</h5>
         <p>
@@ -60,5 +67,7 @@ export default{
 </template>
 
 <style lang="scss" scoped>
-
+a.badge{
+    margin-right: 10px;
+}
 </style>
