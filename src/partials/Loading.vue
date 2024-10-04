@@ -15,8 +15,9 @@
   border: 3px dotted #FFF;
   border-style: solid solid dotted dotted;
   border-radius: 50%;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  transform: translate(-50%,-50%);
   display: inline-block;
   position: relative;
   box-sizing: border-box;
@@ -56,5 +57,6 @@
     transform: rotate(-360deg);
   }
 } 
+
    
 </style>

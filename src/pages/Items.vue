@@ -51,7 +51,7 @@ export default{
     <h2>ITEMS</h2>
     <div class="wrapper">
         <div class="wrapper_item">
-                <div class="my_loader" v-if="isLoading">
+                <div id="my_loader" v-if="isLoading">
                     <Loading/>
                 </div>
                 <ul v-else>
@@ -67,15 +67,21 @@ export default{
          <div class="wrapper_cath">
              <div>
                 <h4>Tecnologie:</h4>
-                 <a class="badge badge-tech" v-for="tech in technologies.technologies">
-                    <router-link :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
-                </a>
+                <div id="my_loader" v-if="isLoading">
+                    <Loading/>
+                </div>
+                 <span v-else v-for="tech in technologies.technologies">
+                    <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
+                </span>
              </div>
              <div>
                 <h4>Tipi:</h4>
-                 <a class="badge badge-type" v-for="type in types.types">
-                    <router-link :to="{name:'lavoriByType', params:{'slug': type.slug}}">{{ type.name }}</router-link>
-                 </a>
+                <div id="my_loader" v-if="isLoading">
+                    <Loading/>
+                </div>
+                 <span v-else v-for="type in types.types">
+                    <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': type.slug}}">{{ type.name }}</router-link>
+                 </span>
              </div>
          </div>
     </div>
@@ -99,11 +105,7 @@ ul{
         flex-grow: 1;
         display: flex;
         flex-direction: column;
-    
-        .my_loader{
-            position: relative;
-            flex-grow: 1;
-        }
+        
         .paginator_btn{
             justify-self: flex-end;
         }

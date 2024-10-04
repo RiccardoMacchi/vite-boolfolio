@@ -1,9 +1,12 @@
 <script>
 import Navbar from './partials/Navbar.vue';
+import Footer from './partials/Footer.vue';
+
 
 export default{
   components: {
     Navbar,
+    Footer,
   }
 }
 </script>
@@ -13,6 +16,7 @@ export default{
   <div class="container">
     <router-view></router-view>
   </div>
+  <Footer/>
 </template>
 
 <style lang="scss" scoped>

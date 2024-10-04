@@ -39,7 +39,7 @@ export default{
 </script>
 
 <template>
-    <div v-if="isLoading">
+    <div id="my_loader" v-if="isLoading">
         <Loading/>
     </div>
     <div v-else>
