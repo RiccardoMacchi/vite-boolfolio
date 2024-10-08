@@ -1,5 +1,5 @@
 export function personalBadge() {
-    let badges = document.querySelectorAll('.badge-type, .badge-tech');
+    let badges = document.querySelectorAll('.badge-type, .badge-tech, .badge-framework');
     console.log(badges);
     badges.forEach(badge => {
         const content = badge.textContent.trim();
@@ -32,16 +32,20 @@ export function personalBadge() {
             case 'Database':
                 badge.classList.add('badge-database');
                 break;
-            case 'API':
-                badge.classList.add('badge-api');
+            case 'SQL':
+                badge.classList.add('badge-sql');
                 break;
-            case 'UI/UX':
-                badge.classList.add('badge-uiux');
+            case 'VueJs':
+                badge.classList.add('badges-vuejs');
                 break;
-            case 'DevOps':
-                badge.classList.add('badge-devops');
+            case 'Laravel':
+                badge.classList.add('badges-laravel');
+                break;
+            case 'Bootstrap':
+                badge.classList.add('badge-bootstrap');
                 break;
             default:
+                badge.classList.add('badge-no-class');
                 break;
         }
         console.log(content);

@@ -1,3 +1,21 @@
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    margin: 3px auto;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.375rem;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+// Classi teconologie
 a.badge-html {
     background-color: #e44d26;
     color: white;
@@ -23,6 +41,12 @@ a.badge-php {
     color: white;
 }
 
+a.badge-sql {
+    background-color: #3f51b5;
+    color: white;
+}
+
+// Classi tipo
 a.badge-frontend {
     background-color: #4caf50;
     color: white;
@@ -43,17 +67,25 @@ a.badge-database {
     color: white;
 }
 
-a.badge-api {
-    background-color: #9c27b0;
+
+// Classi Frameworks
+a.badges-laravel {
+    background-color: #FF2D20;
     color: white;
 }
 
-a.badge-uiux {
-    background-color: #3f51b5;
+a.badges-vuejs {
+    background-color: #42b883;
     color: white;
 }
 
-a.badge-devops {
-    background-color: #e91e63;
+a.badge-bootstrap {
+    background-color: #563d7c;
     color: white;
+}
+
+
+a.badge-no-class {
+    background-color: #e44d26;
+    color: black;
 }

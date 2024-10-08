@@ -32,28 +32,33 @@ export default{
 </script>
 
 <template>
-    <nav class="my_navbar">
-        <ul>
-            <li>
-                <router-link :to="{name:'home'}">Home</router-link>
-            </li>
-            <li>
-                <router-link :to="{name:'items'}">Lavori</router-link>
-            </li>
-            <li>
-                <router-link :to="{name:'contacts'}">Contatti</router-link>
-            </li>
-        </ul>
-        <div>
-            <span id="toggle_theme" @click="toggleTheme()">
-                <i v-if="lightTheme" class="fa-solid fa-sun"></i>
-                <i v-else class="fa-solid fa-moon"></i>
-            </span>
-        </div>
-    </nav>
+    <header>
+        <nav class="my_navbar">
+            <ul>
+                <li>
+                    <router-link :to="{name:'home'}">Home</router-link>
+                </li>
+                <li>
+                    <router-link :to="{name:'items'}">Lavori</router-link>
+                </li>
+                <li>
+                    <router-link :to="{name:'contacts'}">Contatti</router-link>
+                </li>
+            </ul>
+            <div>
+                <span id="toggle_theme" @click="toggleTheme()">
+                    <i v-if="lightTheme" class="fa-solid fa-sun"></i>
+                    <i v-else class="fa-solid fa-moon"></i>
+                </span>
+            </div>
+        </nav>
+    </header>
 </template>
 
 <style lang="scss" scoped>
+
+header{
+    
     .my_navbar{
         max-width: 1080px;
         margin: 0 auto;
@@ -79,4 +84,5 @@ export default{
             color: grey;
         }
     }
+}
 </style>

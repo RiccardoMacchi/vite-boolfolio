@@ -1,6 +1,7 @@
 <script>
 import Loading from '@/partials/Loading.vue';
 import { store } from '@/store/store';
+import { personalBadge } from '@/utilis/utils';
 import axios from 'axios';
 
 export default{
@@ -19,6 +20,10 @@ export default{
                 .then(resp=>{
                     console.log(resp.data)
                     this.types = resp.data.types
+
+                    this.$nextTick(() => {
+                            personalBadge();
+                        })
                 })
         }
     },

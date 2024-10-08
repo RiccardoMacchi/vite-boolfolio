@@ -27,4 +27,10 @@ export default{
   border: 1px solid white;
   border-radius: 10px;
 }
+
+@media screen and (max-width:780px) {
+  .container{
+  margin: 0px 10px;
+}
+}
 </style>

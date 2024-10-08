@@ -9,12 +9,8 @@
 
 <style lang="scss" scoped>
     footer{
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
         text-align: center;
-        min-height: 60px;
+        height: 60px;
         h5{
             line-height: 60px;
         }

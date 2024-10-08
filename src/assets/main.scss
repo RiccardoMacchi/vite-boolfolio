@@ -16,23 +16,6 @@ body {
     }
 }
 
-.badge {
-    display: inline-block;
-    padding: 0.25em 0.4em;
-    margin: 3px auto;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.375rem;
-
-    &:hover {
-        transform: scale(1.1);
-    }
-}
-
 #my_loader {
     min-height: 40vh;
     width: 100%;
