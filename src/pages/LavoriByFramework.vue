@@ -1,32 +1,34 @@
 <script>
-import Loading from '@/partials/Loading.vue';
 import { store } from '@/store/store';
 import axios from 'axios';
-
+import Loading from '@/partials/Loading.vue';
 
 export default{
-    name: 'lavoriByTech',
+    name: 'lavoriByFramework',
     components:{
         Loading
     },
     data(){
         return{
             isLoading : true,
-            technologyName : '',
+            frameworkName : '',
             items : [],
         }
     },
     methods:{
         getApi(slug){
-            axios.get(store.urlApi + 'list-by-technology/' + slug)
+            axios.get(store.urlApi + 'list-by-framework/' + slug)
                 .then(resp =>{
-                    this.isLoading = false
-                    this.technologyName = resp.data.technology.name
-                    this.items = resp.data.technology.items
-                    console.log(this.technologyName)
+                    this.isLoading = false;
+                    if(resp.data.success){
+                        this.frameworkName = resp.data.framework.name
+                        this.items = resp.data.framework.items
+                        console.log(this.frameworkName)
+                    } else{
+                        this.$router.push({ name: '404' })
+                    }
                 })
                 .catch(err =>{
-                    this.$router.push({ name: '404' })
                     console.log(err.message)
                 })
         }
@@ -43,7 +45,7 @@ export default{
         <Loading/>
     </div>
     <div v-else>
-        <h1>TECNOLOGIA: {{ technologyName }}</h1>
+        <h1>TECNOLOGIA: {{ frameworkName }}</h1>
         <h2>Lavori:</h2>
         <ul>
             <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}">
@@ -57,6 +59,7 @@ export default{
         </ul>
     </div>
 </template>
+
 
 <style lang="scss" scoped>
 @import url(../assets/partials/__listBy.scss);

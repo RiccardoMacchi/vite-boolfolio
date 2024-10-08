@@ -75,7 +75,7 @@ export default{
     <h2>ITEMS</h2>
     <div class="search_bar">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="search" v-model="search" @keypress="getApi()">
+        <input type="search" v-model="search">
     </div>
     <div class="wrapper">
         <div class="wrapper_item">
@@ -86,8 +86,10 @@ export default{
                     <h3>NON CI SONO LAVORI</h3>
                 </div>
                 <ul v-else>
-                    <li v-for="item in items">
-                        <router-link :to="{name:'itemsDetails', params:{'slug' : item.slug}}">{{ item.title }}</router-link>
+                    <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}">
+                    <li>
+                        <h4>{{ item.title }}</h4>
+                        {{console.log(item)}}
                         <!-- Small descrizonale -->
                         <small>
                             <h6>Teconologie usate:</h6>
@@ -113,8 +115,9 @@ export default{
                                 <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
                             </span>
                         </small>
-                        
+                        <img class="thumb" :src="item.img_path" :alt="item.title">
                     </li>
+                    </router-link>
                 </ul>
             <div v-if="items.length" class="paginator_btn">
                 <button v-for="link in paginatorLink" v-html="link.label" @click="getApi(link.url)" :disabled="link.active || !link.url"></button>
@@ -149,7 +152,7 @@ export default{
                     <Loading/>
                 </div>
                  <span v-else v-for="framework in frameworks.frameworks">
-                    <a class="badge badge-framework">{{ framework.name }}</a>
+                    <router-link class="badge badge-framework" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}" >{{ framework.name }}</router-link>
                  </span>
              </div>
          </div>
@@ -161,6 +164,7 @@ export default{
 ul{
     list-style: none;
     li{
+        position: relative;
         padding-left: 10px;
         line-height: 25px;
         border-radius: 10px;
@@ -168,6 +172,13 @@ ul{
         margin: 5px;
         &:hover{
             background-color: rgba(82, 82, 82, 0.7);
+        }
+        .thumb{
+            max-width: 100px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translate(0,-50%)
         }
     }
 }
@@ -202,13 +213,14 @@ ul{
         h3{
             color: red;
             margin: 20px auto;
+            text-align: center;
         }
     }
 
 
     .wrapper_cath{
         display: flex;
-        gap: 20px;
+        gap: 10px;
 
         div{
             max-width: 100px;

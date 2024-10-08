@@ -48,6 +48,5 @@ export function personalBadge() {
                 badge.classList.add('badge-no-class');
                 break;
         }
-        console.log(content);
     });
 }

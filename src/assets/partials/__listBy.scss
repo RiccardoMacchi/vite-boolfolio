@@ -1,0 +1,19 @@
+ul {
+    list-style: none;
+
+    li {
+        padding: 10px;
+        line-height: 25px;
+        border-radius: 10px;
+        border: 1px solid grey;
+        margin: 10px auto;
+
+        &:hover {
+            background-color: rgba(82, 82, 82, 0.7);
+        }
+
+        p {
+            padding-left: 15px;
+        }
+    }
+}

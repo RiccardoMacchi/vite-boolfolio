@@ -6,6 +6,7 @@ import Error404 from '@/pages/Error404.vue'
 import LavoriByTech from '@/pages/LavoriByTech.vue'
 import LavoriByType from '@/pages/LavoriByType.vue'
 import Contacts from '@/pages/Contacts.vue'
+import LavoriByFramework from '@/pages/LavoriByFramework.vue'
 
 
 const router = createRouter({
@@ -40,6 +41,11 @@ const router = createRouter({
       path: '/lavori-per-tipo/:slug',
       name: 'lavoriByType',
       component: LavoriByType
+    },
+    {
+      path: '/lavori-per-framework/:slug',
+      name: 'lavoriByFramework',
+      component: LavoriByFramework
     },
     {
       path: '/:pathMatch(.*)*',

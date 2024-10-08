@@ -46,12 +46,21 @@ export default{
     </div>
     <div v-else>
         <h1>TECNOLOGIA: {{ typeName }}</h1>
-        <h5>Lavori:</h5>
+        <h2>Lavori:</h2>
         <ul>
-            <li v-for="item in items">{{ item.title }}</li>
+            <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}">
+            <li>
+                <h4>{{ item.title }}</h4>
+                <p>
+                    {{ item.description }}
+                </p>
+            </li>
+            </router-link>
         </ul>
     </div>
 </template>
 
+
 <style lang="scss" scoped>
+@import url(../assets/partials/__listBy.scss);
 </style>

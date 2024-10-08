@@ -48,7 +48,7 @@ export default{
     <div v-else>
         <h1>Dettaglio di: {{ item.title }}</h1>
         <h5>{{ item.lenguages }}</h5>
-        <img :src="item.img_path" alt="">
+        <img :src="item.img_path" :alt="item.title">
         <div v-if="item.technologies.length > 0">
             <h4>Tecnologie:</h4>
             <span v-for="tech in item.technologies">
@@ -69,5 +69,9 @@ export default{
 <style lang="scss" scoped>
 a.badge{
     margin-right: 10px;
+}
+
+img{
+    width: 100%;
 }
 </style>
