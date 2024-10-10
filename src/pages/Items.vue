@@ -175,6 +175,7 @@ ul{
         }
         .thumb{
             max-width: 100px;
+            border-radius: 5px;
             position: absolute;
             right: 20px;
             top: 50%;
@@ -219,10 +220,9 @@ ul{
 
 
     .wrapper_cath{
-        display: flex;
-        gap: 10px;
-
+        margin-left: 15px;
         div{
+            margin-bottom: 15px;
             max-width: 100px;
         }
     }
@@ -232,7 +232,7 @@ ul{
 .search_bar {
     margin: 10px 0px;
     position: relative;
-    width: 70%;
+    width: 85%;
     input {
         width: 100%;
         padding: 10px 20px 10px 40px;
@@ -263,6 +263,8 @@ ul{
     .wrapper{
         flex-direction: column-reverse;
     .wrapper_cath{
+        display: flex;
+        gap: 20px;
         justify-content: center;
     }
     }
