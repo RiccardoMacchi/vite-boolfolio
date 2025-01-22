@@ -13,6 +13,7 @@ export default{
         return{
             item: [],
             isLoading : true,
+            baseUrl: store.baseUrl
         }
     },
     methods:{
@@ -58,7 +59,7 @@ export default{
             <h4>Dipendenze:</h4>
             <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
         </div>
-        <img :src="item.img_path" :alt="item.title">
+        <img :src="baseUrl + item.img_path" :alt="item.title">
         <h5>Dettagli:</h5>
         <p>
             {{ item.description }}

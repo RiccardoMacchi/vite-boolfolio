@@ -58,9 +58,16 @@ export default{
 <style lang="scss" scoped>
 
 header{
-    
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: black;
+    z-index: 1000;
     .my_navbar{
-        max-width: 1080px;
+        font-size: 1.6rem;
+        width: 1080px;
         margin: 0 auto;
         padding: 20px 0;
         display: flex;

@@ -18,6 +18,7 @@ export default{
             paginatorLink: [],
             search: '',
             isLoading: true,
+            baseUrl: store.baseUrl
         };
     },
     watch: {
@@ -115,11 +116,12 @@ export default{
                                 <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
                             </span>
                         </small>
-                        <img class="thumb" :src="item.img_path" :alt="item.title">
+                        <img class="thumb" :src="baseUrl + item.img_path" :alt="item.title">
                     </li>
                     </router-link>
                 </ul>
-            <div v-if="items.length" class="paginator_btn">
+                <span>{{ console.log(paginatorLink) }}</span>
+            <div v-if="paginatorLink.length > 3" class="paginator_btn">
                 <button v-for="link in paginatorLink" v-html="link.label" @click="getApi(link.url)" :disabled="link.active || !link.url"></button>
             </div>
         </div>
@@ -177,6 +179,8 @@ ul{
             max-width: 100px;
             border-radius: 5px;
             position: absolute;
+            aspect-ratio: 1/1;
+            object-fit: cover;
             right: 20px;
             top: 50%;
             transform: translate(0,-50%)
