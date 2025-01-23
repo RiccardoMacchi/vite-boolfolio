@@ -22,7 +22,6 @@ export default{
         width: 100%;
         text-align: center;
         height: 60px;
-        background-color: rgb(0, 0, 0);
         h5{
             line-height: 60px;
         }

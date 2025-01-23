@@ -12,6 +12,29 @@
 
     }
 
+    footer,
+    header{
+        background-color: #030303;
+    }
+
+    footer{
+        box-shadow: 0 -4px 8px rgb(28, 28, 28);
+    }
+    header{
+        box-shadow: 0 4px 8px rgb(28, 28, 28);
+    }
+
+    .paginator_btn{
+        button{
+            background-color: #182137;
+
+            &:hover {
+                background-color: #2b395e;
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+
 
 
 }
@@ -27,6 +50,28 @@
 
     a {
         color: #333333;
+    }
+
+    footer,
+    header{
+        background-color: #acacac;
+    }
+    
+    footer{
+        box-shadow: 0 -4px 8px rgb(202, 202, 202);
+    }
+    header{
+        box-shadow: 0 4px 8px rgb(202, 202, 202);
+    }
+    .paginator_btn{
+        button{
+            background-color: #007bff;
+
+            &:hover {
+                background-color: #0060c6;
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            }
+        }
     }
 
 }

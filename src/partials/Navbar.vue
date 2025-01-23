@@ -63,11 +63,11 @@ header{
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    background-color: black;
+    // background-color: black;
     z-index: 1000;
     .my_navbar{
         font-size: 1.6rem;
-        width: 1080px;
+        width: 80%;
         margin: 0 auto;
         padding: 20px 0;
         display: flex;

@@ -18,6 +18,7 @@ export default{
             paginatorLink: [],
             search: '',
             isLoading: true,
+            isLoadingTTF: true,
             baseUrl: store.baseUrl
         };
     },
@@ -38,7 +39,8 @@ export default{
             .then(response =>{
                 console.log('chiamta:', urlApi)
                     if(type === 'items'){
-                        this.isLoading= false;
+                        this.isLoading = false;
+                        this.isLoadingTTF = false;
                         this.items = response.data.data.data
                         this.paginatorLink = response.data.data.links
                         console.log(this.items)
@@ -85,6 +87,7 @@ export default{
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" v-model="search">
         </div>
+        <span class="right">Lavori disponibili: {{ items.length }}</span>
     </div>
     <div class="wrapper">
         <div class="wrapper_item">
@@ -95,12 +98,10 @@ export default{
                     <h3>NON CI SONO LAVORI</h3>
                 </div>
                 <div v-else>
-                    <span class="right">Lavori disponibili: {{ items.length }}</span>
                     <div class="wrapper-cards">
                         <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
                             <div class="div-card">
                                 <h4>{{ item.title }}</h4>
-                                {{console.log(item)}}
                                 <div class="thumb">
                                     <img :src="baseUrl + item.img_path" :alt="item.title">
                                 </div>
@@ -120,7 +121,7 @@ export default{
                                         </span>
                                     </div>
                                     <div>
-                                        <i class="fa-solid fa-server"></i>
+                                        <i class="fa-solid fa-microchip"></i>
                                         <span>
                                             <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
                                         </span>
@@ -139,44 +140,37 @@ export default{
                         </router-link>
                     </div>
                 </div>
-                <span>{{ console.log(paginatorLink) }}</span>
-            <div v-if="paginatorLink.length > 3" class="paginator_btn">
-                <button v-for="link in paginatorLink" v-html="link.label" @click="getApi(link.url)" :disabled="link.active || !link.url"></button>
             </div>
-        </div>
         <!-- Tech types frame -->
-         <div class="wrapper_cath">
+        <div id="my_loader" v-if="isLoadingTTF">
+            <Loading/>
+        </div>
+         <div  v-else class="wrapper_cath">
              <!-- Tipi -->
              <div>
                 <h4>Tipi:</h4>
-                <div id="my_loader" v-if="isLoading">
-                    <Loading/>
-                </div>
-                 <span v-else v-for="type in types.types">
+                 <span v-for="type in types.types">
                     <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': type.slug}}">{{ type.name }}</router-link>
                  </span>
              </div>
             <!-- Teconolgie -->
              <div>
                 <h4>Tecnologie:</h4>
-                <div id="my_loader" v-if="isLoading">
-                    <Loading/>
-                </div>
-                <span v-else v-for="tech in technologies.technologies">
+                <span v-for="tech in technologies.technologies">
                     <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
                 </span>
              </div>
              <!-- framework e Librerie -->
              <div>
                 <h4>Frameworks:</h4>
-                <div id="my_loader" v-if="isLoading">
-                    <Loading/>
-                </div>
-                 <span v-else v-for="framework in frameworks.frameworks">
+                 <span v-for="framework in frameworks.frameworks">
                     <router-link class="badge badge-framework" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}" >{{ framework.name }}</router-link>
                  </span>
              </div>
          </div>
+    </div>
+    <div v-if="paginatorLink.length > 3" class="paginator_btn">
+        <button v-for="link in paginatorLink" v-html="link.label" @click="getApi(link.url)" :disabled="link.active || !link.url"></button>
     </div>
 </template>
 
@@ -199,8 +193,9 @@ span{
     
     &.right{
         text-align: right;
-        margin-right: 20px;
         display: block;
+        margin-top: 10px;
+        width: 85%;
     }
 }
 
@@ -210,95 +205,21 @@ span{
     }
 }
 
-// Cards
-
-.wrapper-cards{
+.wrapper_item{
+    flex-grow: 1;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 30px;
-        .card{
-            flex: 0 0 calc(100% / 2 - 30px);
-            .div-card{
-                h4{
-                    font-size: 2.2rem;
-                    margin-bottom: 20px;
-                }
-                .thumb{
-                    width: 60%;
-                    margin: 0 auto;
-                    img{
-                        border-radius: 5px;
-                        aspect-ratio: 1/1;
-                        object-fit: cover;
-                        width: 100%;
-                    }
-                }
+    flex-direction: column;
 
-                .description{
-                    h5{
-                        font-size: 1.2rem;
-                    }
-                    p{
-                        margin: 10px auto;
-                    }
-                }
-
-                .wrap-item-tech-type{
-                    margin-top: 30px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    gap: 20px;
-                    div{
-                        display: flex;
-                        align-items: center;
-                    }
-                    .badge{
-                        padding: 8px;
-                        border-radius: 10px;
-                    }
-                }
-            }
-        }
-    
+    h3{
+        color: red;
+        margin: 20px auto;
+        text-align: center;
+    }
 }
+
 
 .wrapper{
     display: flex;
-
-    .wrapper_item{
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-
-        i{
-            color: rgb(219, 240, 177);
-            padding: 5px;
-            background: #3d3d3d;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
-
-        span{
-            a{
-                width: auto;
-                margin-right: 8px;
-            }
-        }
-        
-        .paginator_btn{
-            justify-self: flex-end;
-        }
-
-        h3{
-            color: red;
-            margin: 20px auto;
-            text-align: center;
-        }
-    }
-
 
     .wrapper_cath{
         margin-left: 15px;
@@ -340,17 +261,25 @@ span{
     width: 100%;
 }
 
-@media screen and (max-width:578px) {
+@media screen and (max-width:580px) {
     .search_bar{
         width: 100%;
     }
+    span{
+        &.right{
+            width: 100%;
+        }
+    }
     .wrapper{
         flex-direction: column-reverse;
-    .wrapper_cath{
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-    }
+        .wrapper_cath{
+            display: flex;
+            justify-content: space-evenly;
+
+            div{
+                text-align: center;
+            }
+        }
     }
 
 }

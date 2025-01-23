@@ -2,6 +2,8 @@
 import Loading from '@/partials/Loading.vue';
 import { store } from '@/store/store';
 import axios from 'axios';
+import { personalBadge } from '@/utilis/utils';
+
 
 
 export default{
@@ -14,6 +16,7 @@ export default{
             isLoading : true,
             technologyName : '',
             items : [],
+            baseUrl: store.baseUrl
         }
     },
     methods:{
@@ -24,6 +27,9 @@ export default{
                     this.technologyName = resp.data.technology.name
                     this.items = resp.data.technology.items
                     console.log(this.technologyName)
+                    this.$nextTick(() => {
+                            personalBadge();
+                        });
                 })
                 .catch(err =>{
                     this.$router.push({ name: '404' })
@@ -45,19 +51,49 @@ export default{
     <div v-else>
         <h1>TECNOLOGIA: {{ technologyName }}</h1>
         <h2>Lavori:</h2>
-        <ul>
-            <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}">
-            <li>
-                <h4>{{ item.title }}</h4>
-                <p>
-                    {{ item.description }}
-                </p>
-            </li>
+        <div class="wrapper-cards">
+            <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
+                <div class="div-card">
+                    <h4>{{ item.title }}</h4>
+                    <div class="thumb">
+                        <img :src="baseUrl + item.img_path" :alt="item.title">
+                    </div>
+                    <div class="description">
+                        <h5>Una breve descrizione:</h5>
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <!-- div descrizonale -->
+                    <div class="wrap-item-tech-type">
+                        <div>
+                            <i class="fa-solid fa-code"></i>
+                            <span v-if="item.technologies.length === 0">
+                                <a class="badge badge-tech">NESSUNA TECNOLOGIA</a>
+                            </span>
+                            <span v-else v-for="tech in item.technologies">
+                                <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
+                            </span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>
+                                <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
+                            </span>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span v-if="item.frameworks.length === 0">
+                                <a class="badge badge-framework">NESSUN FRAMEWORK</a>
+                            </span>
+                            <span v-else v-for="framework in item.frameworks">
+                                <router-link class="badge badge-type" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </router-link>
-        </ul>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-@import url(../assets/partials/__listBy.scss);
 </style>

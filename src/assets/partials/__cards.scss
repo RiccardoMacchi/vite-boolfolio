@@ -1,0 +1,119 @@
+// Cards
+.wrapper-cards{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 30px;
+    .card{
+        flex: 0 0 calc(100% / 2 - 30px);
+        .div-card{
+            h4{
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+            .thumb{
+                width: 60%;
+                margin: 0 auto;
+                img{
+                    border-radius: 5px;
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
+
+            .description{
+                h5{
+                    font-size: 1.2rem;
+                }
+                p{
+                    margin: 10px auto;
+                }
+            }
+
+            .wrap-item-tech-type{
+                margin-top: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+                div{
+                    display: flex;
+                    align-items: center;
+                }
+                .badge{
+                    padding: 8px;
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        i{
+            color: rgb(219, 240, 177);
+            padding: 5px;
+            background: #3d3d3d;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+    
+        span{
+            a{
+                width: auto;
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+.paginator_btn{
+    justify-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    padding: 10px;
+
+    button {
+        color: white;
+        font-size: 1rem;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:disabled {
+            background-color: #d3d3d3;
+            color: #666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        &.active {
+            background-color: #2196f3;
+            color: white;
+            font-weight: bold;
+            cursor: default;
+        }
+    }
+}
+
+@media screen and (max-width:580px) {
+    .wrapper-cards{
+        .card{
+            flex: 0 0 calc(100%);
+            padding-bottom: 50px;
+            border-bottom: 1px solid #c5d8e8;
+
+            .div-card{
+                h4{
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

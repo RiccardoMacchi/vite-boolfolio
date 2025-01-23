@@ -1,5 +1,6 @@
 @import url('./partials/__themes.scss');
 @import url('./partials/__badges.scss');
+@import url('./partials/__cards.scss');
 
 
 * {
@@ -20,7 +21,5 @@ body {
 #my_loader {
     min-height: 40vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
 }
