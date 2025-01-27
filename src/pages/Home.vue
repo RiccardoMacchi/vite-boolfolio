@@ -47,7 +47,7 @@ export default{
                 <img src="/public/welcome_portfolio.png" alt="">
             </div>
             <p>
-                Ciao sono Riccardo Macchi sviluppatore web-app FullStack
+                Ciao, sono Riccardo Macchi, uno sviluppatore FullStack specializzato nella creazione di web app moderne e performanti. La mia missione è trasformare idee in soluzioni digitali innovative e su misura. Esplora il mio portfolio per scoprire i miei lavori e le mie competenze!
             </p>
         </div>
         <div class="skills-wrapper">
@@ -121,6 +121,6 @@ export default{
         .my_skills {
             gap: 20px;
        }
-}
+    }
 }
 </style>

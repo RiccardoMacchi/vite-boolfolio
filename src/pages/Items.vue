@@ -241,7 +241,6 @@ span{
     input {
         width: 100%;
         padding: 10px 20px 10px 40px;
-        border: 1px solid white;
         border-radius: 5px;
         box-sizing: border-box;
     }
@@ -275,6 +274,7 @@ span{
         .wrapper_cath{
             display: flex;
             justify-content: space-evenly;
+            margin-left: 0px;
 
             div{
                 text-align: center;

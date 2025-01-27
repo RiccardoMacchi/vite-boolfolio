@@ -92,4 +92,13 @@ header{
         }
     }
 }
+
+@media screen and (max-width:580px){
+    header{
+        .my_navbar{
+            font-size: 1.3rem;
+            width: 90%;
+        }
+    }
+}
 </style>

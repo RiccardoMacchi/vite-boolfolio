@@ -65,7 +65,7 @@ export default{
             {{ item.description }}
         </p>
         <div class="my_btn">
-            <a class="btn_git" :href="item.git_link" target="_blank">VAI A GIT</a>
+            <a class="btn_git" :href="item.git_link" target="_blank">VAI A GITHUB</a>
             <a class="btn_project" v-if="item.project_link" :href="item.project_link" target="_blank">VAI AL PROGETTO</a>
         </div>
     </div>
@@ -93,6 +93,17 @@ img{
         padding: 5px 20px;
         background-color: green;
         border-radius: 5px;
+    }
+}
+
+@media screen and (max-width:580px){
+    .my_btn{
+        .btn_git,
+        .btn_project{
+            display: block;
+            width: 50%;
+            margin: 10px auto;
+        }
     }
 }
 </style>

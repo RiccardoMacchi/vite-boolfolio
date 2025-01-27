@@ -34,8 +34,11 @@
             }
         }
     }
-
-
+    .search_bar{
+        input{
+            border: 1px solid rgb(255, 255, 255);
+        }
+    }
 
 }
 
@@ -71,6 +74,11 @@
                 background-color: #0060c6;
                 box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             }
+        }
+    }
+    .search_bar{
+        input{
+            border: 1px solid rgb(0, 0, 0);
         }
     }
 
