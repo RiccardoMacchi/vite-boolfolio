@@ -28,10 +28,12 @@ export default{
                     }
                     this.frameworks = resp.data.frameworks
                     
-                    this.$nextTick(() => {
-                        this.isLoading = false
+                    setTimeout(() => {
+                        this.$nextTick(() => {
                             personalBadge();
-                        })
+                            this.isLoading = false
+                            })
+                    }, 500);
                 })
         },
         getLastItems(){
@@ -62,10 +64,10 @@ export default{
 
             <div class="header-welcome">
                 <div class="wrap-info-profile">
-                    <div class="wrap-img-welcome">
+                    <div class="wrap-img-profile">
                         <img src="/public/profile-img.jpg" alt="">
                     </div>
-                    <div>
+                    <div class="info-profile">
                         <span>FULL STACK DEVELOPER</span>
                         <h2>Riccardo Macchi</h2>
                         <span>Sono un FullStack developer Junior, esplora i miei progetti ed esperienze!</span>
@@ -108,7 +110,9 @@ export default{
                         <!-- div descrizonale -->
                         <div class="wrap-item-tech-type">
                             <div>
-                                <i class="fa-solid fa-code"></i>
+                                <div class="icons">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
                                 <span v-if="item.technologies.length === 0">
                                     <a class="badge badge-tech">NESSUNA TECNOLOGIA</a>
                                 </span>
@@ -117,13 +121,17 @@ export default{
                                 </span>
                             </div>
                             <div>
-                                <i class="fa-solid fa-microchip"></i>
+                                <div class="icons">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
                                 <span>
                                     <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
                                 </span>
                             </div>
                             <div>
-                                <i class="fa-solid fa-briefcase"></i>
+                                <div class="icons">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
                                 <span v-if="item.frameworks.length === 0">
                                     <a class="badge badge-framework">NESSUN FRAMEWORK</a>
                                 </span>
@@ -152,6 +160,9 @@ export default{
         gap: 20px;
         border-radius: 10px;
         padding: 25px;
+        .info-profile{
+            text-align: right;
+        }
         .wrap-info-profile{
             flex-basis: calc(70% - 20px);
             display: flex;
@@ -164,25 +175,20 @@ export default{
             margin-top: 15px;
             text-align: right;
             .btn{
+                cursor: pointer;
                 display: inline-block;
-                padding: 5px 10px;
-                border-radius: 5px;
+                padding: 10px 20px;
+                border-radius: 8px;
+                transition: all 0.3s ease-in-out;
                 &:last-child{
                     margin-left: 10px;
                 }
-                &.info-profile{
-                    background-color: green;
-                }
-                &.info-projects{
-                    background-color: blue;
-                }
             }
         }
-        .wrap-img-welcome{
+        .wrap-img-profile{
             width: 80%;
             margin: 0 auto;
             img{
-                border: 2px solid white;
                 border-radius: 50%;
                 aspect-ratio: 1/1;
                 object-fit: cover;
@@ -256,8 +262,17 @@ export default{
             }
         }
         .wrap-item-tech-type{
-            i{
+            .icons{
+                display: inline-block;
+                text-align: center;
+                width: 25px;
                 margin-right: 5px;
+            }
+            span{
+                margin-right: 10px;
+                &:last-child{
+                    margin-right: 0px;
+                }
             }
         }
         .div-card{

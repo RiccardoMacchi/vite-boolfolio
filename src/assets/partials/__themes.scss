@@ -43,8 +43,31 @@
     .wrapper-home-top{
         .header-welcome{
             .wrap-info-profile{
-                background-color: #242424;
-                border: 1px solid black;
+                // background-color: #242424;
+                // border: 1px solid black;
+                img{
+                    border: 2px solid white;
+                }
+                .btns{
+                    .btn{
+                        color: #ffffff;
+                        border: 2px solid #2a3b5a;
+                        &.info-profile{
+                            background-color: #182137;
+                            &:hover{
+                                background-color: #2a3b5a;
+                                box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+                            }
+                        }
+                        &.info-projects{
+                            background-color: #1F2A44;
+                            &:hover{
+                                background-color: #36466B;
+                                box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -53,11 +76,20 @@
             background-color: #242424;
             border: 1px solid black;
         }
+        h3{
+            color: #E0E0E0;
+        }
     }
     .card{
         background-color: #242424;
         border: 1px solid black;
         border-radius: 5px;
+        h4{
+            color: #E0E0E0;
+        }
+        p{
+            color: #B0B3B8;
+        }
     }
 }
 
@@ -97,22 +129,46 @@
     }
     .search_bar{
         input{
-            border: 1px solid rgb(0, 0, 0);
+            border: 1px solid #80B4E0;
         }
     }
     // Home
     .wrapper-home-top{
         .header-welcome{
             .wrap-info-profile{
-                background-color: #F8F9FA;
-                border: 1px solid #0060c6;
+                // background-color: #F8F9FA;
+                // border: 1px solid #80B4E0;
+                img{
+                    border: 2px solid #80B4E0;
+                }
+
+                .btns{
+                    .btn{
+                        color: #0060c6;
+                        border: 2px solid #80B4E0;
+                        &.info-profile{
+                            background-color: #E3F2FD;
+                            &:hover{
+                                background-color: #c2e0ff;
+                                box-shadow: 0 4px 8px rgba(0, 96, 198, 0.2);
+                            }
+                        }
+                        &.info-projects{
+                            background-color: #D0E7FF;
+                            &:hover{
+                                background-color: #A3D0FF;
+                                box-shadow: 0 4px 8px rgba(0, 96, 198, 0.2);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
     .wrapper-home-bottom{
         .skills-wrapper{
             background-color: #F8F9FA;
-            border: 1px solid #0060c6;
+            border: 1px solid #80B4E0 ;
         }
 
         h3{
@@ -121,8 +177,14 @@
     }
     .card{
         background-color: #F8F9FA;
-        border: 1px solid #0060c6;
+        border: 1px solid #80B4E0 ;
         border-radius: 5px;
+        h4{
+            color: #007bff;
+        }
+        p{
+            color: #4A4A4A;
+        }
     }
 
 }

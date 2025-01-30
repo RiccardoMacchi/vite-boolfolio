@@ -34,17 +34,20 @@ export default{
 <template>
     <header>
         <nav class="my_navbar">
-            <ul>
-                <li>
-                    <router-link :to="{name:'home'}">Home</router-link>
-                </li>
-                <li>
-                    <router-link :to="{name:'items'}">Lavori</router-link>
-                </li>
-                <li>
-                    <router-link :to="{name:'contacts'}">Contatti</router-link>
-                </li>
-            </ul>
+            <div class="wrap-menu">
+                <router-link :to="{name:'home'}" class="img-logo">
+                    <img v-if="lightTheme" src="/rem-logo-light.png" alt="Home">
+                    <img v-else src="/rem-logo-dark.png" alt="Home">
+                </router-link>
+                <ul>
+                    <li>
+                        <router-link :to="{name:'items'}">Lavori</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{name:'contacts'}">Contatti</router-link>
+                    </li>
+                </ul>
+            </div>
             <div>
                 <span id="toggle_theme" @click="toggleTheme()">
                     <i v-if="lightTheme" class="fa-solid fa-sun"></i>
@@ -69,14 +72,25 @@ header{
         font-size: 1.6rem;
         width: 80%;
         margin: 0 auto;
-        padding: 20px 0;
         display: flex;
         justify-content: space-between;
-        ul{
-            list-style: none;
-            li{
-                display: inline-block;
-                padding-left: 10px;
+        align-items: center;
+        .wrap-menu{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .img-logo{
+                width: 70px;
+                img{
+                    width: 100%;
+                }
+            }
+            ul{
+                list-style: none;
+                li{
+                    display: inline-block;
+                    padding-left: 10px;
+                }
             }
         }
 
@@ -85,7 +99,7 @@ header{
         }
 
         .fa-solid.fa-sun{
-            color: yellow;
+            color: #007bff;
         }
         .fa-solid.fa-moon{
             color: grey;
