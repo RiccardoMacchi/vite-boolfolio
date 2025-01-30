@@ -52,8 +52,10 @@ export default{
         <Loading/>
     </div>
     <div v-else>
-        <h1>TECNOLOGIA: {{ typeName }}</h1>
-        <h2>Lavori:</h2>
+        <div class="title-name">
+            <a class="badge badge-type bigger-badge">{{ typeName }}</a>
+        </div>
+        <h2>Lavori dispoibili: {{ items.length }}</h2>
         <div class="wrapper-cards">
             <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
                 <div class="div-card">
@@ -104,4 +106,13 @@ export default{
 
 
 <style lang="scss" scoped>
+.title-name{
+    text-align: center;
+    margin: 10px auto;
+}
+
+h2{
+    text-align: right;
+    font-size: 1rem;
+}
 </style>

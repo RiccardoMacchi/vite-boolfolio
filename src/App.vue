@@ -25,4 +25,10 @@ export default{
   width: 90%;
   margin: 0 auto;
 }
+
+@media screen and (min-width:1420px){
+  .container{
+    width: 1280px;
+  }
+}
 </style>

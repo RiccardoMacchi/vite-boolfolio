@@ -12,25 +12,42 @@ export default{
     data(){
         return{
             types : [],
+            frameworks: [],
+            items: [],
+            baseUrl: store.baseUrl,
             isLoading: true,
         }
     },
     methods:{
-        getApi(){
-            axios.get(store.urlApi + 'types')
+        getApi(url){
+            axios.get(url)
                 .then(resp=>{
                     console.log(resp.data)
-                    this.types = resp.data.types
-                    this.isLoading = false
+                    if(!this.types.length){
+                        this.types = resp.data.types
+                    }
+                    this.frameworks = resp.data.frameworks
                     
                     this.$nextTick(() => {
+                        this.isLoading = false
                             personalBadge();
                         })
                 })
+        },
+        getLastItems(){
+            axios.get(store.urlApi + 'items')
+                .then(resp=>{
+                    console.log(resp.data.data.data)
+                    this.items = resp.data.data.data
+                })
+            
         }
     },
     mounted(){
-        this.getApi()
+        this.getApi(store.urlApi + 'types')
+        this.getApi(store.urlApi + 'frameworks')
+        this.getLastItems()
+
     }
 }
 
@@ -41,67 +58,182 @@ export default{
         <Loading/>
     </div>
     <div v-else>
-        <div class="header-welcome">
-            <h1>Benvenuto!</h1>
-            <div class="wrap-img-welcome">
-                <img src="/public/welcome_portfolio.png" alt="">
+        <div class="wrapper-home-top">
+
+            <div class="header-welcome">
+                <div class="wrap-img-welcome">
+                    <img src="/public/profile-img.jpg" alt="">
+                </div>
+                <div>
+                    <span>FULL STACK DEVELOPER</span>
+                    <h2>Riccardo Macchi</h2>
+                    <span>Sono un FullStack developer Junior, esplora i miei progetti ed esperienze!</span>
+                    <div class="btns">
+                        <span class="btn info-profile">
+                            Su di me
+                        </span>
+                        <span class="btn info-projects">
+                            I miei progetti
+                        </span>
+                    </div>              
+                    <!-- <p>
+                        Ciao, sono Riccardo Macchi, sviluppatore FullStack. La mia missione è trasformare idee in soluzioni digitali innovative e su misura. Esplora il mio portfolio per scoprire i miei lavori e le mie competenze!
+                    </p> -->
+                </div>
             </div>
-            <p>
-                Ciao, sono Riccardo Macchi, uno sviluppatore FullStack specializzato nella creazione di web app moderne e performanti. La mia missione è trasformare idee in soluzioni digitali innovative e su misura. Esplora il mio portfolio per scoprire i miei lavori e le mie competenze!
-            </p>
+            <div class="">
+                <img src="/welcome_portfolio.png" alt="">
+            </div>
         </div>
-        <div class="skills-wrapper">
-            <h3>Le mie competenze:</h3>
-            <div class="my_skills">
-                <router-link class="badge badge-type" v-for="type in types" :to="{name:'lavoriByType', params:{'slug': type.slug}}">{{ type.name }}</router-link>
+        <div class="wrapper-home-bottom">
+            <div class="skills-wrapper">
+                <h3>Competenze:</h3>
+                <div class="my_skills">
+                    <router-link class="badge badge-type" v-for="type in types" :to="{name:'lavoriByType', params:{'slug': type.slug}}">{{ type.name }}</router-link>
+                </div>
+                <div class="my_skills">
+                    <router-link class="badge badge-framework" v-for="framework in frameworks" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
+                </div>
+                <p>Scopri tutti i lavori suddivisi per competenza! <i class="fa-solid fa-arrow-up"></i></p>
+            </div>
+            <div class="last-projects">
+                <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
+                    <div class="div-card">
+                        <h4>{{ item.title }}</h4>
+                        <div class="thumb-home">
+                            <img :src="baseUrl + item.img_path" :alt="item.title">
+                        </div>
+                        <!-- div descrizonale -->
+                        <div class="wrap-item-tech-type">
+                            <div>
+                                <i class="fa-solid fa-code"></i>
+                                <span v-if="item.technologies.length === 0">
+                                    <a class="badge badge-tech">NESSUNA TECNOLOGIA</a>
+                                </span>
+                                <span v-else v-for="tech in item.technologies">
+                                    <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
+                                </span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-microchip"></i>
+                                <span>
+                                    <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
+                                </span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-briefcase"></i>
+                                <span v-if="item.frameworks.length === 0">
+                                    <a class="badge badge-framework">NESSUN FRAMEWORK</a>
+                                </span>
+                                <span v-else v-for="framework in item.frameworks">
+                                    <router-link class="badge badge-type" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </router-link>
             </div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.wrapper-home-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    .header-welcome{
+        flex-basis: 100%;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 25px;
+        
+        .btns{
+            margin-top: 15px;
+            text-align: right;
+            .btn{
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 5px;
+                &:last-child{
+                    margin-left: 10px;
+                }
+                &.info-profile{
+                    background-color: green;
+                }
+                &.info-projects{
+                    background-color: blue;
+                }
+            }
+        }
+        .wrap-img-welcome{
+            width: 60%;
+            margin: 0 auto;
+            img{
+                border: 2px solid white;
+                border-radius: 50%;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                object-position: top;
+                width: 100%;
+                margin: 10px auto;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+    
+}
 
-.header-welcome{
-    text-align: center;
-    h1{
-        font-size: 5rem;
+.wrapper-home-bottom{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    .skills-wrapper{
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 10px;
+        flex-basis: 50%;
+        h3{
+            font-size: 3rem;
+        }
+        .my_skills{
+            a{
+                display: block;
+                margin: 5px auto;
+                &.badge{
+                    border-radius: 50px;
+                }
+            }
+        }
     }
-    p{
-        font-size: 1.5rem;
-    }
-    .wrap-img-welcome{
-        width: 50%;
-        margin: 0 auto;
-        img{
-            width: 100%;
+
+    .last-projects{
+        display: flex;
+        gap: 10px;
+        a{
             &:hover{
                 transform: scale(1.1);
             }
         }
-    }
-}
+        .thumb-home{
+                width: 200px;
+                img{
+                    border-radius: 5px;
+                    aspect-ratio: 1/1;
+                    object-fit: cover;
+                    width: 100%;
 
-.skills-wrapper{
-    margin: 40px auto;
-    h3{
-        font-size: 3rem;
-    }
-    .my_skills{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 30px;
-        a{
-            flex: 0 0 calc(100% / 4 - 60px);
-            padding: 30px 70px;
-
-            &.badge{
-                border-radius: 50px;
+                }
             }
-        }
     }
 }
+
 
 @media screen and (max-width: 780px) {
 
@@ -117,7 +249,23 @@ export default{
 }
 
 @media screen and (max-width: 580px){
+    .header-welcome{
+    text-align: center;
+    
+    h1{
+        font-size: 3.5rem;
+    }
+    p{
+        font-size: 1.2rem;
+    }
+    .wrap-img-welcome{
+        width: 50%;
+        }
+    }
     .skills-wrapper{
+        h3{
+            font-size: 2.5rem;
+        }
         .my_skills {
             gap: 20px;
        }

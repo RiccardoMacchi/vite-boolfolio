@@ -13,6 +13,11 @@
     &:hover {
         transform: scale(1.1);
     }
+
+    &.bigger-badge{
+        padding: 15px 40px;
+        font-size: 3rem;
+    }
 }
 
 // Classi teconologie
