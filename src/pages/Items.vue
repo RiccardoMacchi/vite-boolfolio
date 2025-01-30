@@ -87,7 +87,7 @@ export default{
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" v-model="search">
         </div>
-        <span class="right">Lavori disponibili: {{ items.length }}</span>
+        <span class="right">Lavori per pagina: {{ items.length }}</span>
     </div>
     <div class="wrapper">
         <div class="wrapper_item">
@@ -142,32 +142,32 @@ export default{
                 </div>
             </div>
         <!-- Tech types frame -->
-        <div id="my_loader" v-if="isLoadingTTF">
+        <!-- <div id="my_loader" v-if="isLoadingTTF">
             <Loading/>
         </div>
-         <div  v-else class="wrapper_cath">
+         <div  v-else class="wrapper_cath"> -->
              <!-- Tipi -->
-             <div>
+             <!-- <div>
                 <h4>Tipi:</h4>
                  <span v-for="type in types.types">
                     <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': type.slug}}">{{ type.name }}</router-link>
                  </span>
-             </div>
+             </div> -->
             <!-- Teconolgie -->
-             <div>
+             <!-- <div>
                 <h4>Tecnologie:</h4>
                 <span v-for="tech in technologies.technologies">
                     <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
                 </span>
-             </div>
+             </div> -->
              <!-- framework e Librerie -->
-             <div>
+             <!-- <div>
                 <h4>Frameworks:</h4>
                  <span v-for="framework in frameworks.frameworks">
                     <router-link class="badge badge-framework" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}" >{{ framework.name }}</router-link>
                  </span>
              </div>
-         </div>
+         </div> -->
     </div>
     <div v-if="paginatorLink.length > 3" class="paginator_btn">
         <button v-for="link in paginatorLink" v-html="link.label" @click="getApi(link.url)" :disabled="link.active || !link.url"></button>
@@ -195,7 +195,7 @@ span{
         text-align: right;
         display: block;
         margin-top: 10px;
-        width: 85%;
+        // width: 85%;
     }
 }
 
@@ -237,7 +237,7 @@ span{
 .search_bar {
     margin: 10px 0px;
     position: relative;
-    width: 85%;
+    // width: 85%;
     input {
         width: 100%;
         padding: 10px 20px 10px 40px;
@@ -281,7 +281,6 @@ span{
             }
         }
     }
-
 }
 
 </style>

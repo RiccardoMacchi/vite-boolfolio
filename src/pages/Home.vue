@@ -61,28 +61,30 @@ export default{
         <div class="wrapper-home-top">
 
             <div class="header-welcome">
-                <div class="wrap-img-welcome">
-                    <img src="/public/profile-img.jpg" alt="">
+                <div class="wrap-info-profile">
+                    <div class="wrap-img-welcome">
+                        <img src="/public/profile-img.jpg" alt="">
+                    </div>
+                    <div>
+                        <span>FULL STACK DEVELOPER</span>
+                        <h2>Riccardo Macchi</h2>
+                        <span>Sono un FullStack developer Junior, esplora i miei progetti ed esperienze!</span>
+                        <div class="btns">
+                            <span class="btn info-profile">
+                                Su di me
+                            </span>
+                            <span class="btn info-projects">
+                                I miei progetti
+                            </span>
+                        </div>              
+                        <!-- <p>
+                            Ciao, sono Riccardo Macchi, sviluppatore FullStack. La mia missione è trasformare idee in soluzioni digitali innovative e su misura. Esplora il mio portfolio per scoprire i miei lavori e le mie competenze!
+                        </p> -->
+                    </div>
                 </div>
-                <div>
-                    <span>FULL STACK DEVELOPER</span>
-                    <h2>Riccardo Macchi</h2>
-                    <span>Sono un FullStack developer Junior, esplora i miei progetti ed esperienze!</span>
-                    <div class="btns">
-                        <span class="btn info-profile">
-                            Su di me
-                        </span>
-                        <span class="btn info-projects">
-                            I miei progetti
-                        </span>
-                    </div>              
-                    <!-- <p>
-                        Ciao, sono Riccardo Macchi, sviluppatore FullStack. La mia missione è trasformare idee in soluzioni digitali innovative e su misura. Esplora il mio portfolio per scoprire i miei lavori e le mie competenze!
-                    </p> -->
+                <div class="wrap-second-img-welcome">
+                    <img src="/welcome_portfolio.png" alt="">
                 </div>
-            </div>
-            <div class="">
-                <img src="/welcome_portfolio.png" alt="">
             </div>
         </div>
         <div class="wrapper-home-bottom">
@@ -99,7 +101,7 @@ export default{
             <div class="last-projects">
                 <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
                     <div class="div-card">
-                        <h4>{{ item.title }}</h4>
+                        <h3>{{ item.title }}</h3>
                         <div class="thumb-home">
                             <img :src="baseUrl + item.img_path" :alt="item.title">
                         </div>
@@ -148,10 +150,16 @@ export default{
         display: flex;
         align-items: center;
         gap: 20px;
-        border: 1px solid white;
         border-radius: 10px;
         padding: 25px;
-        
+        .wrap-info-profile{
+            flex-basis: calc(70% - 20px);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-radius: 10px;
+            padding: 25px;
+        }
         .btns{
             margin-top: 15px;
             text-align: right;
@@ -171,7 +179,7 @@ export default{
             }
         }
         .wrap-img-welcome{
-            width: 60%;
+            width: 80%;
             margin: 0 auto;
             img{
                 border: 2px solid white;
@@ -187,20 +195,29 @@ export default{
             }
         }
     }
+    .wrap-second-img-welcome{
+        flex-basis: calc(30% - 20px);
+        img{
+            width: 100%;
+        }
+    }
     
 }
 
 .wrapper-home-bottom{
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    align-items: flex-start;
+    gap: 20px;
     .skills-wrapper{
-        border: 1px solid white;
+        position: sticky;
+        top: 75px;
+        // border: 1px solid white;
         border-radius: 10px;
         padding: 10px;
-        flex-basis: 50%;
+        flex-basis: 30%;
         h3{
-            font-size: 3rem;
+            font-size: 1.5rem;
         }
         .my_skills{
             a{
@@ -215,34 +232,69 @@ export default{
 
     .last-projects{
         display: flex;
+        align-items: flex-start;
+        flex-grow: 1;
         gap: 10px;
+
+        h3{
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
         a{
             &:hover{
                 transform: scale(1.1);
             }
         }
         .thumb-home{
-                width: 200px;
-                img{
-                    border-radius: 5px;
-                    aspect-ratio: 1/1;
-                    object-fit: cover;
-                    width: 100%;
+            width: 100%;
+            img{
+                border-radius: 5px;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                width: 100%;
 
-                }
             }
+        }
+        .wrap-item-tech-type{
+            i{
+                margin-right: 5px;
+            }
+        }
+        .div-card{
+            padding: 20px;
+        }
     }
 }
 
+@media screen and (max-width:1180px){
+    .wrapper-home-bottom{
+        .last-projects{
+            flex-wrap: wrap;
+
+            a{
+                flex-basis: calc(50% - 10px);
+            }
+        }
+    }
+
+}
 
 @media screen and (max-width: 780px) {
 
-    .skills-wrapper{
-
-        .my_skills {
-            gap: 40px;
-            a {
-                flex: 0 0 calc(100% / 2 - 100px);
+    .wrapper-home-bottom{
+        .last-projects{
+            flex-wrap: wrap;
+    
+            a{
+                flex-basis: 100%;
+            }
+        }
+        .skills-wrapper{
+            .my_skills {
+                gap: 40px;
+                a {
+                    flex: 0 0 calc(100% / 2 - 100px);
+                }
             }
         }
     }

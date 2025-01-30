@@ -39,7 +39,26 @@
             border: 1px solid rgb(255, 255, 255);
         }
     }
-
+    // Home
+    .wrapper-home-top{
+        .header-welcome{
+            .wrap-info-profile{
+                background-color: #242424;
+                border: 1px solid black;
+            }
+        }
+    }
+    .wrapper-home-bottom{
+        .skills-wrapper{
+            background-color: #242424;
+            border: 1px solid black;
+        }
+    }
+    .card{
+        background-color: #242424;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
 }
 
 .light-theme {
@@ -57,7 +76,7 @@
 
     footer,
     header{
-        background-color: #acacac;
+        background-color: #F8F9FA;
     }
     
     footer{
@@ -80,6 +99,30 @@
         input{
             border: 1px solid rgb(0, 0, 0);
         }
+    }
+    // Home
+    .wrapper-home-top{
+        .header-welcome{
+            .wrap-info-profile{
+                background-color: #F8F9FA;
+                border: 1px solid #0060c6;
+            }
+        }
+    }
+    .wrapper-home-bottom{
+        .skills-wrapper{
+            background-color: #F8F9FA;
+            border: 1px solid #0060c6;
+        }
+
+        h3{
+            color: #007bff;
+        }
+    }
+    .card{
+        background-color: #F8F9FA;
+        border: 1px solid #0060c6;
+        border-radius: 5px;
     }
 
 }
