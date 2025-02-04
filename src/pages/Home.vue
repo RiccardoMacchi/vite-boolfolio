@@ -72,12 +72,12 @@ export default{
                         <h2>Riccardo Macchi</h2>
                         <span>Sono un FullStack developer Junior, esplora i miei progetti ed esperienze!</span>
                         <div class="btns">
-                            <span class="btn info-profile">
+                            <!-- <span class="btn info-profile">
                                 Su di me
-                            </span>
-                            <span class="btn info-projects">
+                            </span> -->
+                            <router-link :to="{name:'items'}" class="btn info-projects">
                                 I miei progetti
-                            </span>
+                            </router-link>
                         </div>              
                         <!-- <p>
                             Ciao, sono Riccardo Macchi, sviluppatore FullStack. La mia missione è trasformare idee in soluzioni digitali innovative e su misura. Esplora il mio portfolio per scoprire i miei lavori e le mie competenze!
@@ -89,6 +89,7 @@ export default{
                 </div>
             </div>
         </div>
+        <h2 id="sub-title">I miei progetti piu recenti:</h2>
         <div class="wrapper-home-bottom">
             <div class="skills-wrapper">
                 <h3>Competenze:</h3>
@@ -149,10 +150,6 @@ export default{
 
 <style lang="scss" scoped>
 .wrapper-home-top{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
     .header-welcome{
         flex-basis: 100%;
         display: flex;
@@ -238,7 +235,7 @@ export default{
 
     .last-projects{
         display: flex;
-        align-items: flex-start;
+        align-items: stretch;
         flex-grow: 1;
         gap: 10px;
 
@@ -281,6 +278,11 @@ export default{
     }
 }
 
+#sub-title{
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width:1180px){
     .wrapper-home-bottom{
         .last-projects{
@@ -295,6 +297,14 @@ export default{
 }
 
 @media screen and (max-width: 780px) {
+    .wrapper-home-top{
+        .header-welcome{
+            display: block;
+        }
+        .wrap-second-img-welcome{
+            display: none;
+        }
+    }
 
     .wrapper-home-bottom{
         .last-projects{
@@ -316,26 +326,41 @@ export default{
 }
 
 @media screen and (max-width: 580px){
-    .header-welcome{
-    text-align: center;
-    
-    h1{
-        font-size: 3.5rem;
-    }
-    p{
-        font-size: 1.2rem;
-    }
-    .wrap-img-welcome{
-        width: 50%;
+    .wrapper-home-top{
+        .header-welcome{
+            text-align: center;
+            
+            h1{
+                font-size: 3.5rem;
+            }
+            p{
+                font-size: 1.2rem;
+            }
+            .wrap-info-profile{
+                display: block;
+                .wrap-img-welcome{
+                    width: 50%;
+                    }
+                }
+            }
+            .skills-wrapper{
+                h3{
+                    font-size: 2.5rem;
+                }
+                .my_skills {
+                    gap: 20px;
+            }
         }
     }
-    .skills-wrapper{
-        h3{
-            font-size: 2.5rem;
+    .wrapper-home-bottom{
+        display: block;
+        .skills-wrapper{
+            display: none;
         }
-        .my_skills {
-            gap: 20px;
-       }
+    }
+    #sub-title{
+        font-size: 1.5rem;
+        margin-bottom: 10px;
     }
 }
 </style>

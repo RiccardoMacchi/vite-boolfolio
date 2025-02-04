@@ -20,8 +20,10 @@ export default{
         },
         startTheme(){
             const body = document.body
-            body.classList.add('dark-theme')
-            console.log()
+            const userTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-theme' : 'light-theme';
+            console.log(userTheme);
+            body.classList.add(userTheme)
+            this.lightTheme = userTheme === 'light-theme';
         }
     },
     mounted(){
@@ -107,11 +109,13 @@ header{
     }
 }
 
-@media screen and (max-width:580px){
+@media screen and (max-width:1180px){
     header{
         .my_navbar{
-            font-size: 1.3rem;
             width: 90%;
+            @media screen and (max-width:580px){
+                font-size: 1.3rem;
+            }
         }
     }
 }

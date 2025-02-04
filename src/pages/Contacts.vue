@@ -73,18 +73,18 @@ export default{
                 <p>Hai domande, proposte o vuoi collaborare con me? Compila il modulo qui sotto e scrivimi! Sarò felice di risponderti al più presto.</p>
                 <form action="#" @submit.prevent="sendEmail()">
                     <div>
-                        <label for="">Nome</label>
-                        <input type="text" name="subject" id="name" v-model="name">
+                        <label for="">Nome società o progetto:</label>
+                        <input type="text" name="subject" id="name" v-model="name" placeholder="Inserisci qui il nome della società/progetto">
                         <small class="error">{{ errors.name?.toString() }}</small>
                     </div>
                     <div>
-                        <label for="">Email</label>
-                        <input type="email" name="email" id="email" v-model="email">
+                        <label for="">Email di contattato:</label>
+                        <input type="email" name="email" id="email" v-model="email" placeholder="Inserisci qui la email dove vorresti essere ricontattato">
                         <small class="error">{{ errors.email?.toString() }}</small>
                     </div>
                     <div>
                         <label for="">Messaggio</label>
-                        <textarea name="message" rows="10" id="message" v-model="message"></textarea>
+                        <textarea name="message" rows="10" id="message" v-model="message" placeholder="Inserisci una breve descrizione del progetto o del ruolo che si stava ricercando"></textarea>
                         <small class="error">{{ errors.message?.toString() }}</small>
                     </div>
                     <div class="btn-actions">
@@ -137,20 +137,41 @@ form{
         color: red;
     }
 
-    .btn-actions{
-        text-align: right;
-        button{
-            padding: 4px 8px;
-            border-radius: 5px;
-            color: white;
-            &.send{
-                background-color: green;
-            }
-            &.cancel{
-                background-color: red;
-            }
-        }
+    .btn-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px;
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
     }
+
+    &.send {
+      background-color: #28a745;
+      &:hover {
+        background-color: #218838;
+      }
+    }
+
+    &.cancel {
+      background-color: #dc3545;
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+}
+
 
     
 }
