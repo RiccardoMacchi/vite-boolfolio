@@ -37,18 +37,24 @@ export default{
     <header>
         <nav class="my_navbar">
             <div class="wrap-menu">
-                <router-link :to="{name:'home'}" class="img-logo">
-                    <img v-if="lightTheme" src="/rem-logo-light.png" alt="Home">
-                    <img v-else src="/rem-logo-dark.png" alt="Home">
-                </router-link>
-                <ul>
-                    <li>
-                        <router-link :to="{name:'items'}">Lavori</router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{name:'contacts'}">Contatti</router-link>
-                    </li>
-                </ul>
+                <div class="img-logo">
+                    <router-link :to="{name:'home'}">
+                        <img v-if="lightTheme" src="/rem-logo-light.png" alt="Home">
+                        <img v-else src="/rem-logo-dark.png" alt="Home">
+                    </router-link>
+                </div>
+                <div class="menu">
+                    <router-link :to="{name:'items'}">
+                        <span class="route-tb">Progetti</span>
+                        <i class="fa-solid fa-briefcase route-mb"></i>
+                    </router-link>
+                </div>
+                <div class="menu">
+                    <router-link :to="{name:'contacts'}">
+                        <span class="route-tb">Contatti</span>
+                        <i class="fa-solid fa-envelope route-mb"></i>
+                    </router-link>
+                </div>    
             </div>
             <div>
                 <span id="toggle_theme" @click="toggleTheme()">
@@ -80,18 +86,26 @@ header{
         .wrap-menu{
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
+            gap: 10px;
+            height: 80px;
             .img-logo{
                 width: 70px;
                 img{
                     width: 100%;
                 }
             }
-            ul{
-                list-style: none;
-                li{
-                    display: inline-block;
-                    padding-left: 10px;
+            .menu {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex: 1;
+                a {
+                    padding: 0 10px;
+                    transition: color 0.3s ease;
+                    .route-mb{
+                        display: none;
+                    }
                 }
             }
         }
@@ -115,6 +129,27 @@ header{
             width: 90%;
             @media screen and (max-width:580px){
                 font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:580px){
+    header{
+        .my_navbar{
+            .wrap-menu{
+                gap: 20px;
+                .menu {
+                    a {
+                        .route-mb{
+                            display: inline-block;
+                            font-size: 1.4rem;
+                        }
+                        .route-tb{
+                            display: none;
+                        }
+                    }
+                }
             }
         }
     }

@@ -7,6 +7,9 @@
     background-attachment: fixed;
     background-size: cover;
 
+    h2{
+        color: #e3b602;
+    }
     a {
         color: #f5f5f5;
 
@@ -22,6 +25,29 @@
     }
     header{
         box-shadow: 0 4px 8px rgb(28, 28, 28);
+
+        .wrap-menu{
+            div:has(> .router-link-active) {
+                border-bottom: 2px solid #e3b602;
+              }
+
+              .menu {
+                a {
+                    color: #e3b602;
+                    transition: color 0.3s ease;
+            
+                    &.router-link-active {
+                        color: #f5c20a;
+                    }
+            
+                    &:hover {
+                        color: #f5c20a;
+                    }
+                }
+            }
+            
+            
+        }
     }
 
     .paginator_btn{
@@ -77,7 +103,7 @@
             border: 1px solid black;
         }
         h3{
-            color: #E0E0E0;
+            color: #f5c20a;
         }
     }
     .card{
@@ -85,7 +111,7 @@
         border: 1px solid black;
         border-radius: 5px;
         h4{
-            color: #E0E0E0;
+            color: #f5c20a;
         }
         p{
             color: #B0B3B8;
@@ -102,6 +128,9 @@
     background-attachment: fixed;
     background-size: cover;
 
+    h2{
+        color: #004085;
+    }
     a {
         color: #333333;
     }
@@ -116,6 +145,23 @@
     }
     header{
         box-shadow: 0 4px 8px rgb(202, 202, 202);
+
+        .wrap-menu{
+            div:has(> .router-link-active) {
+                border-bottom: 2px solid #007bff;
+              }
+            .menu{
+                a{
+                    color: #004085;
+                    &.router-link-active{
+                        color: #007bff;
+                    }
+                    &:hover{
+                        color: #007bff;
+                    }
+                }
+            }
+        }
     }
     .paginator_btn{
         button{

@@ -69,7 +69,7 @@ export default{
     <div>
         <div v-if="!sending && !sentError">
             <div class="sent-mail" v-if="!sent">
-                <h1>CONTATTAMI</h1>
+                <h2>CONTATTAMI</h2>
                 <p>Hai domande, proposte o vuoi collaborare con me? Compila il modulo qui sotto e scrivimi! Sarò felice di risponderti al più presto.</p>
                 <form action="#" @submit.prevent="sendEmail()">
                     <div>
@@ -113,8 +113,9 @@ export default{
 
 <style lang="scss" scoped>
 .sent-mail{
-    h1{
+    h2{
         text-align: center;
+        font-size: 2.5rem;
         margin: 20px auto;
     }
     p{

@@ -76,18 +76,18 @@ export default{
 
 <template>
     <div>
-        <h2>I miei Lavori</h2>
+        <h2>Esplora i miei progetti</h2>
         <div class="wrap-img">
             <img src="../../public/my_works.svg" alt="">
         </div>
     </div>
     <div class="wrapp-search">
-        <h4>Carca tra tutti i lavori:</h4>
+        <h4>Carca tra tutti i progetti:</h4>
         <div class="search_bar">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="search" v-model="search">
         </div>
-        <span class="right">Lavori per pagina: {{ items.length }}</span>
+        <span class="right">Progetti per pagina: {{ items.length }}</span>
     </div>
     <div class="wrapper">
         <div class="wrapper_item">
@@ -261,8 +261,16 @@ span{
 }
 
 @media screen and (max-width:580px) {
-    .search_bar{
-        width: 100%;
+    h2{
+        font-size: 3.3rem;
+    }
+    .wrapp-search{
+        h4{
+            font-size: 1.4rem;
+        }
+        .search_bar{
+            width: 100%;
+        }
     }
     span{
         &.right{

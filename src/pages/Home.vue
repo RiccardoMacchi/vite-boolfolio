@@ -328,8 +328,9 @@ export default{
 @media screen and (max-width: 580px){
     .wrapper-home-top{
         .header-welcome{
-            text-align: center;
-            
+            .info-profile{
+                text-align: center;
+            }
             h1{
                 font-size: 3.5rem;
             }
@@ -338,6 +339,7 @@ export default{
             }
             .wrap-info-profile{
                 display: block;
+                padding: 0;
                 .wrap-img-welcome{
                     width: 50%;
                     }
