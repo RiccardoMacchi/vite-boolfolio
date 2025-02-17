@@ -18,9 +18,10 @@
                 width: 80%;
                 margin: 20px auto;
                 img{
+                    aspect-ratio: 1/1;
                     border-radius: 5px;
-                    // aspect-ratio: 1/1;
-                    object-fit: cover;
+                    border-radius: 8px;
+                    object-fit: contain;
                     width: 100%;
                 }
 

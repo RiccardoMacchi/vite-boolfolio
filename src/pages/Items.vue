@@ -106,8 +106,8 @@ export default{
                                     <img :src="baseUrl + item.img_path" :alt="item.title">
                                 </div>
                                 <div class="description">
-                                    <h5>Una breve descrizione:</h5>
-                                    <p>{{ item.description }}</p>
+                                    <!-- <h5>Una breve descrizione:</h5> -->
+                                    <p>{{ item.short_description }}</p>
                                 </div>
                                 <!-- div descrizonale -->
                                 <div class="wrap-item-tech-type">

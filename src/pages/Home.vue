@@ -111,6 +111,9 @@ export default{
                             <img :src="baseUrl + item.img_path" :alt="item.title">
                         </div>
                         <!-- div descrizonale -->
+                        <div class="short-description">
+                            <p>{{ item.short_description }}</p>
+                        </div>
                         <div class="wrap-item-tech-type">
                             <div>
                                 <div class="icons">
@@ -278,6 +281,11 @@ export default{
         }
         .div-card{
             padding: 20px;
+
+            .short-description{
+                margin: 10px auto;
+                text-align: center;
+            }
         }
     }
 }
