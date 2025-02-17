@@ -78,13 +78,13 @@ export default{
                         <small class="error">{{ errors.name?.toString() }}</small>
                     </div>
                     <div>
-                        <label for="">Email di contattato:</label>
-                        <input type="email" name="email" id="email" v-model="email" placeholder="Inserisci qui la email dove vorresti essere ricontattato">
+                        <label for="">Email:</label>
+                        <input type="email" name="email" id="email" v-model="email" placeholder="Inserisci qui la tua email">
                         <small class="error">{{ errors.email?.toString() }}</small>
                     </div>
                     <div>
                         <label for="">Messaggio</label>
-                        <textarea name="message" rows="10" id="message" v-model="message" placeholder="Inserisci una breve descrizione del progetto o del ruolo che si stava ricercando"></textarea>
+                        <textarea name="message" rows="10" id="message" v-model="message" placeholder="Inserire una breve descrizione del progetto o del ruolo che si stava ricercando"></textarea>
                         <small class="error">{{ errors.message?.toString() }}</small>
                     </div>
                     <div class="btn-actions">

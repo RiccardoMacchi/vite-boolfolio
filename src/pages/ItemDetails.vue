@@ -47,17 +47,25 @@ export default{
         <Loading/>
     </div>
     <div v-else>
-        <h1>Dettaglio di: {{ item.title }}</h1>
+        <h2>{{ item.title }}</h2>
         <h5>{{ item.lenguages }}</h5>
-        <div v-if="item.technologies.length > 0">
-            <h4>Tecnologie:</h4>
-            <span v-for="tech in item.technologies">
-                <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
-            </span>
-        </div>
-        <div>
-            <h4>Dipendenze:</h4>
-            <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
+        <div class="info">
+            <div v-if="item.technologies.length > 0">
+                <h4>Tecnologie:</h4>
+                <span v-for="tech in item.technologies">
+                    <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
+                </span>
+            </div>
+            <div v-if="item.frameworks.length > 0">
+                <h4>Frameworks:</h4>
+                <span v-for="framework in item.frameworks">
+                    <router-link class="badge badge-type" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
+                </span>
+            </div>
+            <div>
+                <h4>Dipendenze:</h4>
+                <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
+            </div>
         </div>
         <img :src="baseUrl + item.img_path" :alt="item.title">
         <h5>Dettagli:</h5>
@@ -72,6 +80,12 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+h2{
+    text-align: center;
+    font-size: 3rem;
+    margin: 10px auto;
+}
+
 a.badge{
     margin-right: 10px;
 }
@@ -80,21 +94,29 @@ img{
     width: 100%;
     border-radius: 5px;
 }
-.my_btn{
+
+.info{
     margin: 15px auto;
-    text-align: center;
-    .btn_git{
-        padding: 5px 20px;
-        background-color: blue;
-        border-radius: 5px;
+    div{
+        margin: 5px auto;
     }
-    .btn_project{
-        margin-left: 20px;
-        padding: 5px 20px;
-        background-color: green;
-        border-radius: 5px;
-    }
+
 }
+// .my_btn{
+//     margin: 15px auto;
+//     text-align: center;
+//     .btn_git{
+//         padding: 5px 20px;
+//         background-color: blue;
+//         border-radius: 5px;
+//     }
+//     .btn_project{
+//         margin-left: 20px;
+//         padding: 5px 20px;
+//         background-color: green;
+//         border-radius: 5px;
+//     }
+// }
 
 @media screen and (max-width:580px){
     .my_btn{

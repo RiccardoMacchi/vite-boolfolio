@@ -89,7 +89,7 @@ export default{
                 </div>
             </div>
         </div>
-        <h2 id="sub-title">I miei progetti piu recenti:</h2>
+        <h2 class="sub-title none-mobile">I miei progetti piu recenti:</h2>
         <div class="wrapper-home-bottom">
             <div class="skills-wrapper">
                 <h3>Competenze:</h3>
@@ -101,6 +101,8 @@ export default{
                 </div>
                 <p>Scopri tutti i lavori suddivisi per competenza! <i class="fa-solid fa-arrow-up"></i></p>
             </div>
+            <h2 class="sub-title mb-sub-title">I miei progetti piu recenti:</h2>
+
             <div class="last-projects">
                 <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
                     <div class="div-card">
@@ -235,6 +237,7 @@ export default{
 
     .last-projects{
         display: flex;
+        flex-wrap: wrap;
         align-items: stretch;
         flex-grow: 1;
         gap: 10px;
@@ -244,6 +247,7 @@ export default{
             margin-bottom: 10px;
         }
         a{
+            flex-basis: calc(50% - 10px);
             &:hover{
                 transform: scale(1.1);
             }
@@ -278,16 +282,17 @@ export default{
     }
 }
 
-#sub-title{
+.sub-title{
     font-size: 2rem;
     margin-bottom: 10px;
+    &.mb-sub-title{
+        display: none;
+    }
 }
 
 @media screen and (max-width:1180px){
     .wrapper-home-bottom{
         .last-projects{
-            flex-wrap: wrap;
-
             a{
                 flex-basis: calc(50% - 10px);
             }
@@ -357,12 +362,31 @@ export default{
     .wrapper-home-bottom{
         display: block;
         .skills-wrapper{
-            display: none;
+            // display: none;
+            position: static;
+            text-align: center;
+            .my_skills{
+                a{
+                    display: inline-block;
+                    margin-right: 5px;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+            }
         }
     }
-    #sub-title{
+    .sub-title{
         font-size: 1.5rem;
         margin-bottom: 10px;
+
+        &.none-mobile{
+            display: none;
+        }
+        &.mb-sub-title{
+            display: block;
+            margin-top: 20px;
+        }
     }
 }
 </style>
