@@ -70,6 +70,9 @@ export default{
         <div v-if="!sending && !sentError">
             <div class="sent-mail" v-if="!sent">
                 <h2>CONTATTAMI</h2>
+                <div class="wrap-contact-img">
+                    <img src="/public/work-together-2.png" alt="">
+                </div>
                 <p>Hai domande, proposte o vuoi collaborare con me? Compila il modulo qui sotto e scrivimi! Sarò felice di risponderti al più presto.</p>
                 <form action="#" @submit.prevent="sendEmail()">
                     <div>
@@ -112,6 +115,13 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+.wrap-contact-img{
+    width: 60%;
+    margin: 0 auto;
+    img{
+        width: 100%;
+    }
+}
 .sent-mail{
     h2{
         text-align: center;
@@ -194,6 +204,18 @@ form{
     h3{
         color: green;
         margin: 20px;
+    }
+}
+
+@media screen and (max-width: 780px){
+    .wrap-contact-img{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 580px){
+    .wrap-contact-img{
+        width: 100%;
     }
 }
 </style>

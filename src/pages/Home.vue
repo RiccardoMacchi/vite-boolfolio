@@ -251,17 +251,18 @@ export default{
         }
         a{
             flex-basis: calc(50% - 10px);
-            &:hover{
-                transform: scale(1.1);
-            }
         }
         .thumb-home{
-            width: 100%;
+            width: 90%;
+            margin: 20px auto;
             img{
                 border-radius: 5px;
                 aspect-ratio: 1/1;
                 object-fit: cover;
                 width: 100%;
+                &:hover{
+                    transform: scale(1.1);
+                }
 
             }
         }
@@ -271,6 +272,7 @@ export default{
                 text-align: center;
                 width: 25px;
                 margin-right: 5px;
+                // color: yellowgreen;
             }
             span{
                 margin-right: 10px;
