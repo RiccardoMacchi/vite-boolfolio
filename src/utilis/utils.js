@@ -1,6 +1,6 @@
 export function personalBadge() {
     let badges = document.querySelectorAll('.badge-type, .badge-tech, .badge-framework');
-    console.log(badges);
+    // console.log(badges);
     badges.forEach(badge => {
         const content = badge.textContent.trim();
 

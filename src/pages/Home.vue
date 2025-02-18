@@ -89,7 +89,7 @@ export default{
                 </div>
             </div>
         </div>
-        <h2 class="sub-title none-mobile">I miei progetti piu recenti:</h2>
+        <h2 class="sub-title none-mobile">Ultimi progetti</h2>
         <div class="wrapper-home-bottom">
             <div class="skills-wrapper">
                 <h3>Competenze:</h3>
@@ -101,7 +101,7 @@ export default{
                 </div>
                 <p>Scopri tutti i lavori suddivisi per competenza! <i class="fa-solid fa-arrow-up"></i></p>
             </div>
-            <h2 class="sub-title mb-sub-title">I miei progetti piu recenti:</h2>
+            <h2 class="sub-title mb-sub-title">Ultimi progetti</h2>
 
             <div class="last-projects">
                 <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
@@ -114,7 +114,7 @@ export default{
                         <div class="short-description">
                             <p>{{ item.short_description }}</p>
                         </div>
-                        <div class="wrap-item-tech-type">
+                        <!-- <div class="wrap-item-tech-type">
                             <div>
                                 <div class="icons">
                                     <i class="fa-solid fa-code"></i>
@@ -138,6 +138,32 @@ export default{
                                 <div class="icons">
                                     <i class="fa-solid fa-briefcase"></i>
                                 </div>
+                                <span v-if="item.frameworks.length === 0">
+                                    <a class="badge badge-framework">NESSUN FRAMEWORK</a>
+                                </span>
+                                <span v-else v-for="framework in item.frameworks">
+                                    <router-link class="badge badge-type" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
+                                </span>
+                            </div>
+                        </div> -->
+                        <div class="wrap-item-tech-type">
+                            <div>
+                                <i class="fa-solid fa-code"></i>
+                                <span v-if="item.technologies.length === 0">
+                                    <a class="badge badge-tech">NESSUNA TECNOLOGIA</a>
+                                </span>
+                                <span v-else v-for="tech in item.technologies">
+                                    <router-link class="badge badge-tech" :to="{name:'lavoriByTech', params:{'slug' : tech.slug}}">{{ tech.name }}</router-link>
+                                </span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-microchip"></i>
+                                <span>
+                                    <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
+                                </span>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-briefcase"></i>
                                 <span v-if="item.frameworks.length === 0">
                                     <a class="badge badge-framework">NESSUN FRAMEWORK</a>
                                 </span>
@@ -266,18 +292,32 @@ export default{
 
             }
         }
+        
         .wrap-item-tech-type{
-            .icons{
-                display: inline-block;
-                text-align: center;
-                width: 25px;
-                margin-right: 5px;
-                // color: yellowgreen;
-            }
-            span{
-                margin-right: 10px;
-                &:last-child{
-                    margin-right: 0px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            div{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                i{
+                    color: rgb(219, 240, 177);
+                    padding: 5px;
+                    background: #3d3d3d;
+                    border-radius: 5px;
+                    margin-right: 5px;
+                }
+        
+                span{
+                    a{
+                        width: auto;
+                    }
                 }
             }
         }

@@ -68,14 +68,14 @@ export default{
             </div>
         </div>
         <img :src="baseUrl + item.img_path" :alt="item.title">
-        <h5>Dettagli:</h5>
-        <p>
-            {{ item.description }}
-        </p>
         <div class="my_btn">
             <a class="btn_git" :href="item.git_link" target="_blank">VAI A GITHUB</a>
             <a class="btn_project" v-if="item.project_link" :href="item.project_link" target="_blank">VAI AL PROGETTO</a>
         </div>
+        <h5>Dettagli:</h5>
+        <p>
+            {{ item.description }}
+        </p>
     </div>
 </template>
 
@@ -102,30 +102,15 @@ img{
     }
 
 }
-// .my_btn{
-//     margin: 15px auto;
-//     text-align: center;
-//     .btn_git{
-//         padding: 5px 20px;
-//         background-color: blue;
-//         border-radius: 5px;
-//     }
-//     .btn_project{
-//         margin-left: 20px;
-//         padding: 5px 20px;
-//         background-color: green;
-//         border-radius: 5px;
+
+// @media screen and (max-width:580px){
+//     .my_btn{
+//         .btn_git,
+//         .btn_project{
+//             display: block;
+//             width: 50%;
+//             margin: 10px auto;
+//         }
 //     }
 // }
-
-@media screen and (max-width:580px){
-    .my_btn{
-        .btn_git,
-        .btn_project{
-            display: block;
-            width: 50%;
-            margin: 10px auto;
-        }
-    }
-}
 </style>

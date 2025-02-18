@@ -71,8 +71,6 @@ export default{
 header{
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
     width: 100%;
     // background-color: black;
     z-index: 1000;
