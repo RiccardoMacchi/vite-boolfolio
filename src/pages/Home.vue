@@ -99,7 +99,7 @@ export default{
                 <div class="my_skills">
                     <router-link class="badge badge-framework" v-for="framework in frameworks" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
                 </div>
-                <p>Scopri tutti i lavori suddivisi per competenza! <i class="fa-solid fa-arrow-up"></i></p>
+                <p>Scopri tutti i progetti suddivisi per competenza! <i class="fa-solid fa-arrow-up"></i></p>
             </div>
             <h2 class="sub-title mb-sub-title">Ultimi progetti</h2>
 
@@ -162,12 +162,9 @@ export default{
                                     <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
                                 </span>
                             </div>
-                            <div>
+                            <div v-if="item.frameworks.length">
                                 <i class="fa-solid fa-briefcase"></i>
-                                <span v-if="item.frameworks.length === 0">
-                                    <a class="badge badge-framework">NESSUN FRAMEWORK</a>
-                                </span>
-                                <span v-else v-for="framework in item.frameworks">
+                                <span v-for="framework in item.frameworks">
                                     <router-link class="badge badge-type" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
                                 </span>
                             </div>

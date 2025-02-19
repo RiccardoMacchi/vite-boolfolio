@@ -126,12 +126,9 @@ export default{
                                             <router-link class="badge badge-type" :to="{name:'lavoriByType', params:{'slug': item.type.slug}}">{{ item.type.name }}</router-link>
                                         </span>
                                     </div>
-                                    <div>
+                                    <div v-if="item.frameworks.length">
                                         <i class="fa-solid fa-briefcase"></i>
-                                        <span v-if="item.frameworks.length === 0">
-                                            <a class="badge badge-framework">NESSUN FRAMEWORK</a>
-                                        </span>
-                                        <span v-else v-for="framework in item.frameworks">
+                                        <span v-for="framework in item.frameworks">
                                             <router-link class="badge badge-type" :to="{name:'lavoriByFramework', params:{'slug': framework.slug}}">{{ framework.name }}</router-link>
                                         </span>
                                     </div>
