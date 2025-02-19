@@ -102,6 +102,16 @@ img{
     }
 
 }
+.my_btn{
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    gap: 20px;
+    a{
+        display: inline-block;
+    }
+}
 
 // @media screen and (max-width:580px){
 //     .my_btn{

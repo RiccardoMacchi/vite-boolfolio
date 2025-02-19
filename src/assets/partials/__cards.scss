@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     gap: 30px;
     .card{
-        flex: 1 1 calc(100% / 2 - 30px);
+        flex: 0 0 calc(100% / 2 - 30px);
         border-radius: 10px;
         .div-card{
             padding: 20px;
