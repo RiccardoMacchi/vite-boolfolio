@@ -1,4 +1,5 @@
 <script>
+import Tris from '@/components/Tris.vue';
 import Loading from '@/partials/Loading.vue';
 import { store } from '@/store/store';
 import { personalBadge } from '@/utilis/utils';
@@ -7,7 +8,8 @@ import axios from 'axios';
 export default{
     name: 'home',
     components:{
-        Loading
+        Loading,
+        Tris
     },
     data(){
         return{
@@ -60,6 +62,9 @@ export default{
         <Loading/>
     </div>
     <div v-else>
+        <div id="tris">
+            <Tris/>
+        </div>
         <div class="wrapper-home-top">
 
             <div class="header-welcome">
@@ -177,6 +182,11 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+#tris{
+    margin: 40px auto;
+    text-align: center;
+}
+
 .wrapper-home-top{
     .header-welcome{
         flex-basis: 100%;
