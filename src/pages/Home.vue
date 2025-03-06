@@ -62,9 +62,6 @@ export default{
         <Loading/>
     </div>
     <div v-else>
-        <div id="tris">
-            <Tris/>
-        </div>
         <div class="wrapper-home-top">
 
             <div class="header-welcome">
@@ -94,6 +91,11 @@ export default{
                 </div>
             </div>
         </div>
+        <div class="line left"></div>
+        <div id="tris">
+            <Tris/>
+        </div>
+        <div class="line right"></div>
         <h2 class="sub-title none-mobile">Ultimi progetti</h2>
         <div class="wrapper-home-bottom">
             <div class="skills-wrapper">
@@ -107,7 +109,6 @@ export default{
                 <p>Scopri tutti i progetti suddivisi per competenza! <i class="fa-solid fa-arrow-up"></i></p>
             </div>
             <h2 class="sub-title mb-sub-title">Ultimi progetti</h2>
-
             <div class="last-projects">
                 <router-link v-for="item in items" :to="{name:'itemsDetails', params:{'slug' : item.slug}}" class="card">
                     <div class="div-card">

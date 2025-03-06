@@ -7,6 +7,15 @@
     background-attachment: fixed;
     background-size: cover;
 
+    .line{
+        &.left{
+            background: linear-gradient(to left, #f5c20a, #242424);
+        }
+        &.right{
+            background: linear-gradient(to right, #f5c20a, #242424);
+        }
+    }
+
     h2{
         color: #e3b602;
     }
@@ -142,6 +151,56 @@
             }
         }
     }
+    // Tris
+    .header-tris{
+        .select-symbol{
+            span{
+                &.x{
+                    color: black;
+                    background-color: #f5c20a;
+                    border: 2px solid black;
+                    &:hover{
+                        background-color: #f5c20a;
+                        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+                    }
+                }
+                &.o{
+                    color: white;
+                    background-color: #1F2A44;
+                    border: 2px solid #2a3b5a;
+                    &:hover{
+                        background-color: #1F2A44;
+                        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+                    }
+                }
+            }
+        }
+    }
+    .board{
+        .row{
+            span{
+                &.x{
+                    color: black;
+                    background-color: #f5c20a;
+                    border: 2px solid black;
+                }
+                &.o{
+                    color: white;
+                    background-color: #1F2A44;
+                    border: 2px solid #2a3b5a;
+                }
+            }
+        }
+    }
+    .play-again{
+        .btn{
+            span{
+                color: black;
+                background-color: #f5c20a;
+                border: 2px solid black;
+            }
+        }
+    }
 }
 
 .light-theme {
@@ -152,6 +211,15 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+
+    .line{
+        &.left{
+            background: linear-gradient(to left, #014b9a, #80B4E0);
+        }
+        &.right{
+            background: linear-gradient(to right, #014b9a, #80B4E0);
+        }
+    }
 
     h2{
         color: #004085;
@@ -282,8 +350,64 @@
             }
         }
     }
-}
+    // Tris
+    .header-tris{
+        .select-symbol{
+            span{
+                &.x{
+                    color: #0060c6;
+                    background-color: #E3F2FD;
+                    border: 2px solid #80B4E0;
+                    &:hover{
+                        background-color: #c2e0ff;
+                        box-shadow: 0 4px 8px rgba(0, 96, 198, 0.2);
 
+                    }
+                }
+                &.o{
+                    color: white;
+                    background-color: #014b9a;
+                    border: 2px solid #80B4E0;
+                    &:hover{
+                        background-color: #093562;
+                        box-shadow: 0 4px 8px rgba(0, 96, 198, 0.2);
+
+                    }
+                }
+            }
+        }
+    }
+    .board{
+        .row{
+            span{
+                &.x{
+                    color: #0060c6;
+                    background-color: #E3F2FD;
+                    border: 2px solid #80B4E0;
+                }
+                &.o{
+                    color: white;
+                    background-color: #014b9a;
+                    border: 2px solid #80B4E0;
+                }
+            }
+        }
+    }
+    .play-again{
+        .btn{
+            span{
+                color: white;
+                background-color: #014b9a;
+                border: 2px solid #80B4E0;
+            }
+        }
+    }
+}
+.line{
+    height: 2px;
+    margin: 10px auto;
+    width: 90%;
+}
 a.badge-tech {
     background-color: yellowgreen;
     color: black;
